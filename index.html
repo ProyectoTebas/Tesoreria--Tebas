@@ -65,22 +65,23 @@ canvas{max-height:260px}
 <div class="hd">
  <div class="firm">Tebas Coiduras · Estudio Jurídico</div>
  <h1>Informe de Tesorería · Ejercicio 2026</h1>
- <div class="sub">Cashflow consolidado · <b>Actualizado 09/10/2026</b> · 4 cuentas bancarias · Límite descubierto: −90.000 € (Sabadell 40k + Santander 50k)</div>
+ <div class="sub">Cashflow consolidado · <b>Actualizado 16/10/2026</b> · 4 cuentas bancarias · Límite descubierto: −90.000 € (Sabadell 40k + Santander 50k)</div>
 </div>
 
 <div class="kpis" id="kpis"></div>
 
-<div class="highlight">✅ <b>Semana muy positiva en cobros:</b> remesas igualas octubre (43.535 €, 07/10) + CD Lugo Fra G356 (12.100 €, 07/10) + J.J. Sport varias facturas (19.548 €) + otros. El resultado neto 2026 pasa a <b>positivo (+22.856 €)</b> por primera vez desde la devolución del préstamo JTM.</div>
-<div class="alert-red">🚨 <b>DICIEMBRE EN DESCUBIERTO: −124.037 €</b> — supera el límite de −90.000 € en 34.037 €. IVA 2T 3º plazo (06/12) + nóminas navidad + SS diciembre acumulan la presión.</div>
-<div class="alert-amber">🔔 <b>Eric Depolo Afrosport LTD Fra. P-11 — 15.000 €</b> desplazado al 05/11/2026 en el Excel. Más de 90 días vencido. Reclamar urgentemente — alivia noviembre.</div>
-<div class="alert-amber">🔔 <b>Santander 8521 — saldo −47.800 €:</b> solo 2.200 € libres de los 50.000 €. Total disponible crédito: <b>42.200 €</b> (Sabadell 40k + Santander 2,2k).</div>
-<div class="note">El flujo operativo real 2026 (sin la devolución extraordinaria de 150k a JTM en sep) es <b>+172.856 €</b> — el despacho genera caja de forma sana. La presión de fin de año viene de obligaciones fiscales concentradas en nov–dic.</div>
+<div class="highlight">✅ <b>Resultado neto 2026 positivo por segundo semana consecutiva: +20.872 €.</b> Flujo operativo real (sin dev. préstamo JTM 150k): <b>+170.872 €</b>. Semana tranquila — gastos corrientes y cobros menores.</div>
+<div class="alert-red">🚨 <b>DICIEMBRE EN DESCUBIERTO: −118.861 €</b> — supera el límite de −90.000 € en 28.861 €. IVA 2T 3º plazo (06/12) + nóminas navidad + SS diciembre.</div>
+<div class="alert-amber">🔔 <b>IVA 3T (20/10) — 30.118 €:</b> lleva el saldo de +17.449 € a −12.669 €. Dentro del límite pero ajustado.</div>
+<div class="alert-amber">🔔 <b>Eric Depolo P-11 — 15.000 €</b> previsto 05/11 en Excel. Más de 100 días vencido. Reclamar activamente.</div>
+<div class="alert-amber">🔔 <b>Santander 8521 — saldo −47.800 €:</b> solo 2.200 € libres. Total disponible crédito: <b>42.200 €</b>.</div>
+<div class="note">Semana 10–16/10: cobros menores (Zitum Fruit 871 €, Liguerre 779 €, Quirón Prevención 173 €) y gastos corrientes (Registradores 2.677 €, Endesa Gas 340 €, suministros). Traspaso entre cuentas propias 700 €.</div>
 
 <h2>Línea de tesorería y uso de crédito</h2>
 <div class="card">
   <canvas id="chLinea" style="max-height:260px"></canvas>
   <div style="margin-top:8px;font-family:'Segoe UI',sans-serif;font-size:11px;color:var(--mut)">
-    Saldo real 09/10: <b>20.132 €</b>. Líneas de crédito: 90.000 € (Sabadell 40k + Santander 50k). Noviembre dentro del límite (−83k). Diciembre supera el límite (−124k) — se necesitan medidas correctoras.
+    Saldo real 16/10: <b>17.449 €</b>. El IVA 3T (20/10, −30.118 €) lleva el saldo a −12.669 €. Noviembre dentro del límite (−76.784 €). Diciembre supera el límite (−118.861 €).
   </div>
 </div>
 
@@ -89,36 +90,34 @@ canvas{max-height:260px}
   <table class="proj-table">
     <thead><tr><th>Fecha</th><th>Concepto clave</th><th style="text-align:right">Ingreso</th><th style="text-align:right">Cargo</th><th style="text-align:right">Saldo</th><th>Estado</th></tr></thead>
     <tbody>
-      <tr><td colspan="4"><b>Saldo real Sabadell 09/10</b></td><td class="num saldo-ok">+20.132 €</td><td><span class="tag tag-ok">✅</span></td></tr>
+      <tr><td colspan="4"><b>Saldo real Sabadell 16/10</b></td><td class="num saldo-ok">+17.449 €</td><td><span class="tag tag-ok">✅</span></td></tr>
 
       <tr class="proj-mes"><td colspan="6">OCTUBRE — RESTO</td></tr>
-      <tr><td>14–16/10</td><td>Nóminas oct + tarjetas + alquileres + Chocarro</td><td class="num pos">+1.500 €</td><td class="num neg">−36.883 €</td><td class="num saldo-warn">−15.251 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-cobro"><td>~15/10</td><td>🔴 Eric Depolo P-11 (desplazado al 05/11 en Excel)</td><td class="num" style="color:#aaa">—</td><td></td><td class="num saldo-warn">−15.251 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-desc"><td>20/10</td><td>🔴 Liquidación IVA 3T + IRPF 3T + Mod. 115 + 202</td><td class="num pos">+684 €</td><td class="num neg">−30.118 €</td><td class="num saldo-red">−44.685 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr><td>27–31/10</td><td>Remesa + SS + Diego nov + varios</td><td class="num pos">+0 €</td><td class="num neg">−10.566 €</td><td class="num saldo-red">−55.251 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-cierre"><td colspan="4">📅 Cierre octubre</td><td class="num saldo-warn">−35.251 €</td><td><span class="tag tag-amber">⚠️ Crédito</span></td></tr>
+      <tr class="proj-desc"><td>20/10</td><td>🔴 Liquidación IVA 3T + IRPF 3T + Mod. 115 + 202</td><td class="num pos">+684 €</td><td class="num neg">−30.802 €</td><td class="num saldo-warn">−12.669 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
+      <tr><td>21–27/10</td><td>Gastos corrientes varios</td><td></td><td class="num neg">−1.503 €</td><td class="num saldo-warn">−14.172 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
+      <tr><td>27–31/10</td><td>Remesa + SS + Diego nov + alquileres</td><td class="num pos">+3.977 €</td><td class="num neg">−19.611 €</td><td class="num saldo-red">−29.806 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
+      <tr class="proj-cierre"><td colspan="4">📅 Cierre octubre</td><td class="num saldo-warn">−29.806 €</td><td><span class="tag tag-amber">⚠️ Crédito</span></td></tr>
 
       <tr class="proj-mes"><td colspan="6">NOVIEMBRE 2026</td></tr>
-      <tr class="proj-cobro"><td>01–05/11</td><td>Remesa igualas nov (22.731 €) + Eric Depolo P-11 (15k previsto Excel)</td><td class="num pos">+37.731 €</td><td class="num neg">−41.798 €</td><td class="num saldo-red">−39.318 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-desc"><td>06–30/11</td><td>🔴 IVA 5º plazo + IVA 2T 2º plazo + Chocarro incentivos + JTL + SS + tarjetas + nóminas</td><td class="num pos">+9.775 €</td><td class="num neg">−53.458 €</td><td class="num saldo-red">−83.001 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-cierre"><td colspan="4">📅 Cierre noviembre</td><td class="num saldo-warn">−83.001 €</td><td><span class="tag tag-amber">⚠️ Dentro límite</span></td></tr>
+      <tr class="proj-cobro"><td>01–05/11</td><td>Remesa igualas nov (22.731 €) + Eric Depolo P-11 (15k previsto)</td><td class="num pos">+37.731 €</td><td class="num neg">−41.798 €</td><td class="num saldo-warn">−33.873 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
+      <tr class="proj-desc"><td>06–30/11</td><td>🔴 IVA 5º plazo + IVA 2T 2º plazo + Chocarro incentivos + JTL + SS + nóminas + tarjetas</td><td class="num pos">+10.075 €</td><td class="num neg">−53.986 €</td><td class="num saldo-red">−76.784 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
+      <tr class="proj-cierre"><td colspan="4">📅 Cierre noviembre</td><td class="num saldo-warn">−76.784 €</td><td><span class="tag tag-amber">⚠️ Dentro límite</span></td></tr>
 
       <tr class="proj-mes"><td colspan="6">DICIEMBRE 2026</td></tr>
-      <tr><td>01–05/12</td><td>Remesa igualas dic (24.454 €) + nóminas + IVA 6º plazo + alquileres</td><td class="num pos">+30.219 €</td><td class="num neg">−47.603 €</td><td class="num saldo-red">−100.385 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr class="proj-desc"><td>06/12</td><td>🔴 IVA 2T 3º plazo (4.230 €) + seguro RC (643 €)</td><td></td><td class="num neg">−4.873 €</td><td class="num saldo-red">−105.258 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr><td>08–18/12</td><td>JTL Fra enero + Chocarro + registradores + cobros</td><td class="num pos">+5.105 €</td><td class="num neg">−11.990 €</td><td class="num saldo-red">−112.143 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr class="proj-desc"><td>19/12</td><td>🔴 Nóminas extra navidad</td><td></td><td class="num neg">−8.806 €</td><td class="num saldo-red">−120.949 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr><td>22–31/12</td><td>Remesas + facturación extra + SS + otros</td><td class="num pos">+3.405 €</td><td class="num neg">−6.493 €</td><td class="num saldo-red">−124.037 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr style="background:#fdecea;font-weight:700"><td colspan="4">📅 <b>Cierre diciembre 2026</b></td><td class="num saldo-red"><b>−124.037 €</b></td><td><span class="tag tag-out">🚨 +34.037 € sobre límite</span></td></tr>
+      <tr><td>01–05/12</td><td>Remesa igualas dic (24.454 €) + nóminas + IVA 6º plazo + alquileres</td><td class="num pos">+30.919 €</td><td class="num neg">−48.303 €</td><td class="num saldo-red">−94.168 €</td><td><span class="tag tag-out">🚨</span></td></tr>
+      <tr class="proj-desc"><td>06/12</td><td>🔴 IVA 2T 3º plazo (4.230 €) + seguro RC (643 €)</td><td></td><td class="num neg">−4.873 €</td><td class="num saldo-red">−99.041 €</td><td><span class="tag tag-out">🚨</span></td></tr>
+      <tr><td>08–18/12</td><td>JTL Fra enero + Chocarro + registradores + cobros</td><td class="num pos">+5.105 €</td><td class="num neg">−12.731 €</td><td class="num saldo-red">−106.667 €</td><td><span class="tag tag-out">🚨</span></td></tr>
+      <tr class="proj-desc"><td>19/12</td><td>🔴 Nóminas extra navidad</td><td></td><td class="num neg">−8.806 €</td><td class="num saldo-red">−115.473 €</td><td><span class="tag tag-out">🚨</span></td></tr>
+      <tr><td>22–31/12</td><td>Remesas + facturación + SS fin de año</td><td class="num pos">+3.405 €</td><td class="num neg">−6.793 €</td><td class="num saldo-red">−118.861 €</td><td><span class="tag tag-out">🚨</span></td></tr>
+      <tr style="background:#fdecea;font-weight:700"><td colspan="4">📅 <b>Cierre diciembre 2026</b></td><td class="num saldo-red"><b>−118.861 €</b></td><td><span class="tag tag-out">🚨 +28.861 € sobre límite</span></td></tr>
     </tbody>
   </table>
   <div style="margin-top:12px;font-family:'Segoe UI',sans-serif;font-size:12px;color:#5a1a0a;background:#fdecea;padding:12px 14px;border-radius:6px;border-left:3px solid #c0392b">
-    <b>🚨 MEDIDAS URGENTES PARA DICIEMBRE:</b><br>
-    A · Cobrar Eric Depolo P-11 (15k) antes del 05/11 — ya previsto en Excel<br>
-    B · Diferir o negociar Chocarro incentivos noviembre<br>
-    C · <b>Aplazar IVA 2T 3º plazo (06/12) con AEAT</b> — evita 4.873 € en el peor momento<br>
-    D · <b>Ampliar línea de crédito Sabadell</b> — urgente para cubrir el exceso de 34.037 €<br>
-    E · Anticipar cobros de diciembre a noviembre
+    <b>🚨 MEDIDAS PARA DICIEMBRE (28.861 € sobre límite):</b><br>
+    A · Aplazar IVA 2T 3º plazo (06/12, 4.873 €) con AEAT<br>
+    B · Ampliar línea de crédito Sabadell<br>
+    C · Anticipar cobros de diciembre a noviembre<br>
+    D · Cobrar Infovaticana / Laurentina (27.236 € pendientes)
   </div>
 </div>
 
@@ -135,33 +134,24 @@ canvas{max-height:260px}
   <div class="card"><h3>Reparto de gastos</h3><canvas id="chGto"></canvas></div>
 </div>
 
-<h2>Novedades 03–09/10 · 46 operaciones</h2>
+<h2>Novedades 10–16/10 · 13 operaciones</h2>
 <div class="card">
   <table class="tbl">
     <thead><tr><th>Fecha</th><th>Concepto</th><th class="num">Ingreso</th><th class="num">Cargo</th></tr></thead>
     <tbody>
-      <tr class="hl-green"><td>07/10</td><td><b>Descuento igualas clientes — remesa octubre</b> <span class="tag tag-in">cobro</span></td><td class="num pos"><b>43.534,59</b></td><td></td></tr>
-      <tr class="hl-green"><td>07/10</td><td>CD Lugo S.A.D Fra G356 <span class="tag tag-in">cobro</span></td><td class="num pos">12.100,00</td><td></td></tr>
-      <tr class="hl-green"><td>05/10</td><td>J.J. Sport Managers — Caso Baba Idrissu Fra. <span class="tag tag-in">cobro</span></td><td class="num pos">8.655,41</td><td></td></tr>
-      <tr class="hl-green"><td>06/10</td><td>J.J. Sport Managers — Fra. G163 Caso Laffer abogados <span class="tag tag-in">cobro</span></td><td class="num pos">6.305,05</td><td></td></tr>
-      <tr class="hl-green"><td>05/10</td><td>J.J. Sport Managers — igualas mayo a septiembre <span class="tag tag-in">cobro</span></td><td class="num pos">4.587,00</td><td></td></tr>
-      <tr class="hl-green"><td>07/10</td><td>Adela Oliver Salas Fra. G377 <span class="tag tag-in">cobro</span></td><td class="num pos">1.588,13</td><td></td></tr>
-      <tr class="hl-green"><td>05/10</td><td>Remesas fras. extra <span class="tag tag-in">cobro</span></td><td class="num pos">1.295,63</td><td></td></tr>
-      <tr class="hl-green"><td>08/10</td><td>Jesus Oliver Bonjoch Fra G378 <span class="tag tag-in">cobro</span></td><td class="num pos">762,30</td><td></td></tr>
-      <tr class="hl-green"><td>06/10</td><td>Dan Jafferson Fra G374 <span class="tag tag-in">cobro</span></td><td class="num pos">605,00</td><td></td></tr>
-      <tr class="hl-green"><td>06/10</td><td>Obras y Desmontes Mini SL Fra G376 <span class="tag tag-in">cobro</span></td><td class="num pos">571,72</td><td></td></tr>
-      <tr class="hl-green"><td>05/10</td><td>Rayo Alcobendas Fra G143 <span class="tag tag-in">cobro</span></td><td class="num pos">900,84</td><td></td></tr>
-      <tr class="hl-green"><td>09/10</td><td>Fernandez Tisner Miguel — igualas jun–sep <span class="tag tag-in">cobro</span></td><td class="num pos">418,16</td><td></td></tr>
-      <tr><td>09/10</td><td>Retirada en efectivo — gastos Lucio Angel</td><td></td><td class="num neg">2.000,00</td></tr>
-      <tr><td>09/10</td><td>Pago parcial Fra G376 Emilio Obras 50%</td><td></td><td class="num neg">7.402,78</td></tr>
-      <tr><td>07/10</td><td>Chocarro Abogados SL — Fra. 013/2026 septiembre</td><td></td><td class="num neg">3.630,00</td></tr>
-      <tr><td>07/10</td><td>Pago Fra. contables externos octubre</td><td></td><td class="num neg">2.708,00</td></tr>
-      <tr><td>08/10</td><td>Transferencia a Confederación Argentina de Baloncesto</td><td></td><td class="num neg">2.833,33</td></tr>
-      <tr><td>05/10</td><td>4º Plazo IVA 2026 1T</td><td></td><td class="num neg">5.093,49</td></tr>
-      <tr><td>05/10</td><td>Tarjeta crédito Despacho</td><td></td><td class="num neg">3.108,22</td></tr>
-      <tr><td>05/10</td><td>Tarjeta crédito JTL</td><td></td><td class="num neg">1.207,30</td></tr>
-      <tr><td>05/10</td><td>Computer Huesca (×2)</td><td></td><td class="num neg">499,73</td></tr>
-      <tr style="font-weight:700;background:#f3ead4"><td colspan="2">TOTALES PERÍODO</td><td class="num pos">81.354,78</td><td class="num neg">31.936,06</td></tr>
+      <tr class="hl-green"><td>14/10</td><td>Zitum Fruit SL Fra G384 <span class="tag tag-in">cobro</span></td><td class="num pos">871,20</td><td></td></tr>
+      <tr class="hl-green"><td>15/10</td><td>Liguerre Enoturismo SL Fra C1073 <span class="tag tag-in">cobro</span></td><td class="num pos">778,82</td><td></td></tr>
+      <tr class="hl-green"><td>13/10</td><td>Quirón Prevención Fra G369 <span class="tag tag-in">cobro</span></td><td class="num pos">172,53</td><td></td></tr>
+      <tr><td>16/10</td><td>Traspaso entre cuentas Sabadell ↔ Santander</td><td class="num pos">700,00</td><td class="num neg">700,00</td></tr>
+      <tr><td>12/10</td><td>Asociación Colegio Registradores de España</td><td></td><td class="num neg">2.676,88</td></tr>
+      <tr><td>14/10</td><td>Endesa Energía Gas</td><td></td><td class="num neg">340,23</td></tr>
+      <tr><td>15/10</td><td>Salvador suministro de oficina</td><td></td><td class="num neg">205,53</td></tr>
+      <tr><td>14/10</td><td>Revista Huesca Aki</td><td></td><td class="num neg">191,18</td></tr>
+      <tr><td>15/10</td><td>Grenke Rent — renting impresoras</td><td></td><td class="num neg">178,96</td></tr>
+      <tr><td>15/10</td><td>Newsar Logística SL (MRW)</td><td></td><td class="num neg">57,09</td></tr>
+      <tr><td>12/10</td><td>Copiadoras Digitales de Huesca</td><td></td><td class="num neg">152,02</td></tr>
+      <tr><td>14/10</td><td>Axesor</td><td></td><td class="num neg">3,93</td></tr>
+      <tr style="font-weight:700;background:#f3ead4"><td colspan="2">TOTALES PERÍODO</td><td class="num pos">2.522,55</td><td class="num neg">4.505,82</td></tr>
     </tbody>
   </table>
 </div>
@@ -171,9 +161,9 @@ canvas{max-height:260px}
   <table class="tbl">
     <thead><tr><th>Cuenta</th><th class="num">Límite</th><th class="num">Saldo actual</th><th class="num">Disponible</th><th>Estado</th></tr></thead>
     <tbody>
-      <tr class="hl-green"><td>Banco Sabadell (línea crédito 40k)</td><td class="num">40.000 €</td><td class="num pos">+20.132 €</td><td class="num pos">40.000 €</td><td><span class="tag tag-ok">✅ Libre</span></td></tr>
+      <tr class="hl-green"><td>Banco Sabadell (línea crédito 40k)</td><td class="num">40.000 €</td><td class="num pos">+17.449 €</td><td class="num pos">40.000 €</td><td><span class="tag tag-ok">✅ Libre</span></td></tr>
       <tr class="hl-amber"><td>Santander ...8521 (línea crédito 50k)</td><td class="num">50.000 €</td><td class="num neg">−47.800 €</td><td class="num neg" style="font-weight:700">2.200 €</td><td><span class="tag tag-amber">⚠️ Casi agotada</span></td></tr>
-      <tr style="font-weight:700;background:#fff3e0"><td>TOTAL DISPONIBLE</td><td class="num">90.000 €</td><td class="num pos">+20.132 €</td><td class="num" style="font-weight:700;color:#e67e22">42.200 €</td><td><span class="tag tag-amber">⚠️ Limitado</span></td></tr>
+      <tr style="font-weight:700;background:#fff3e0"><td>TOTAL DISPONIBLE</td><td class="num">90.000 €</td><td class="num pos">+17.449 €</td><td class="num" style="font-weight:700;color:#e67e22">42.200 €</td><td><span class="tag tag-amber">⚠️ Limitado</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -187,12 +177,12 @@ canvas{max-height:260px}
 <h2>Resumen ejecutivo</h2>
 <div class="card"><ul id="situacion" style="margin:0;padding-left:18px;line-height:1.8;font-size:13.5px"></ul></div>
 
-<div class="sub" style="margin-top:18px">Informe generado · Tebas Coiduras Estudio Jurídico · ejercicio 2026 · corte 09/10/2026 · 1.163 movimientos.</div>
+<div class="sub" style="margin-top:18px">Informe generado · Tebas Coiduras Estudio Jurídico · ejercicio 2026 · corte 16/10/2026 · 1.176 movimientos.</div>
 
 <script>
 const D={
-  tot_ing:1170653.98, tot_car:1147798.22, n_mov:1163,
-  saldo_sab:20132.41, saldo_san:-47800.09,
+  tot_ing:1173176.53, tot_car:1152304.04, n_mov:1176,
+  saldo_sab:17449.14, saldo_san:-47800.09,
   meses:[
     {mes:"01",ing:124770,car:97263,neto:27507},
     {mes:"02",ing:123145,car:117884,neto:5261},
@@ -203,28 +193,28 @@ const D={
     {mes:"07",ing:97468,car:161924,neto:-64456},
     {mes:"08",ing:75213,car:74575,neto:638},
     {mes:"09",ing:237136,car:233267,neto:3869},
-    {mes:"10",ing:84844,car:111595,neto:-26751},
-    {mes:"11",ing:48206,car:96018,neto:-47812},
-    {mes:"12",ing:38933,car:80731,neto:-41798}
+    {mes:"10",ing:89143,car:110449,neto:-21306},
+    {mes:"11",ing:49537,car:96577,neto:-47040},
+    {mes:"12",ing:39633,car:81772,neto:-42139}
   ],
   clientes:[
     {k:"Facturación jurídica/legal (casos)",v:626000},
-    {k:"Remesas igualas (gestión/asesoría)",v:415000},
+    {k:"Remesas igualas (gestión/asesoría)",v:430000},
     {k:"Intragrupo + refacturaciones",v:55000},
-    {k:"Otros",v:74654}
+    {k:"Otros",v:62177}
   ],
   gastos:[
     {k:"Dev. Préstamo J. Tebas (150k sep)",v:150000},
     {k:"Personal · nóminas",v:109000},
-    {k:"Seguridad Social",v:80000},
-    {k:"Externos legales (JTL + Chocarro)",v:95000},
-    {k:"Impuestos (IRPF + IVA)",v:57000},
+    {k:"Seguridad Social",v:82000},
+    {k:"Externos legales (JTL + Chocarro)",v:97000},
+    {k:"Impuestos (IRPF + IVA)",v:60000},
     {k:"Arval renting",v:25777},
     {k:"Infovaticana / Laurentina",v:27236},
-    {k:"Tarjetas despacho",v:29000}
+    {k:"Tarjetas despacho",v:30000}
   ],
   top_ing:[
-    {k:"Remesa igualas (acumulado)",v:238534},
+    {k:"Remesa igualas (acumulado)",v:242071},
     {k:"J.J Sport Fra. G-91 · Due Diligence CF Talavera",v:84700},
     {k:"CD Eldense S.A.D. Fras G358+G359",v:62315},
     {k:"Costas Randy Nteka Fra G67 (23/09)",v:53615},
@@ -234,23 +224,22 @@ const D={
     {k:"KARPATY FC Fra E-4",v:40000},
     {k:"J.J Sport Fra. G-92 · Operación S. Faye",v:36300},
     {k:"Club Deportivo Eldense Fra G142",v:36300},
-    {k:"J.J. Sport — igualas may–sep",v:4587},
     {k:"Cobro Fras. pendientes J.J Sport",v:31460}
   ],
   top_car:[
     {k:"Dev. Préstamo J. Tebas (150k sep)",v:150000},
-    {k:"SS Huesca + Madrid (acumulado)",v:80000},
-    {k:"JTL servicios 2026 (acumulado)",v:80000},
+    {k:"SS Huesca + Madrid (acumulado)",v:82000},
+    {k:"JTL servicios 2026 (acumulado)",v:82000},
     {k:"Nóminas personal (acumulado)",v:109000},
     {k:"Arval renting",v:25777},
     {k:"HARVESTOP TRADING · caso Karpaty",v:23505},
     {k:"Infovaticana / Laurentina",v:27236},
-    {k:"Tarjetas crédito despacho",v:29000},
-    {k:"Chocarro Abogados (acumulado)",v:21503},
-    {k:"4º Plazo IVA 2026 1T (05/10)",v:5093}
+    {k:"Tarjetas crédito despacho",v:30000},
+    {k:"Chocarro Abogados (acumulado)",v:23000},
+    {k:"Asociación Colegio Registradores (12/10)",v:2677}
   ],
-  proyLabs:["09/10\nActual","14/10\nNóminas","20/10\nIVA 3T","Cierre\nOct","05/11\nDepolo\n+15k","Cierre\nNov","06/12\nIVA 2T","19/12\nNavidad","Cierre\nDic"],
-  proySaldos:[20132,-15251,-44685,-35251,-39318,-83001,-105258,-120949,-124037],
+  proyLabs:["16/10\nActual","20/10\nIVA 3T\n−30k","Cierre\nOct","05/11\nDepolo\n+15k","Cierre\nNov","06/12\nIVA 2T","19/12\nNavidad","Cierre\nDic"],
+  proySaldos:[17449,-12669,-29806,-33873,-76784,-99041,-115473,-118861],
   limiteDesc:-90000
 };
 
@@ -261,15 +250,14 @@ const lab=v=>v>=0?'+ '+eur(v):eur(v);
 const neto=D.tot_ing-D.tot_car;
 
 document.getElementById('kpis').innerHTML=[
-  {lbl:'Total cobros 2026',val:eur(D.tot_ing),delta:'▲ +81.355 € vs 02/10 — semana muy activa',dcol:'var(--green)'},
-  {lbl:'Flujo operativo real',val:'+ '+eur(172856),delta:'Sin dev. préstamo JTM (150k) — despacho genera caja',dcol:'var(--green)',color:'var(--green)'},
-  {lbl:'Resultado neto 2026',val:lab(neto),delta:'Por 1ª vez positivo desde dev. préstamo JTM',dcol:'var(--green)',color:'var(--green)'},
-  {lbl:'Saldo real Sabadell',val:eur2(D.saldo_sab),delta:'Línea crédito 40k disponible al 100%',dcol:'var(--green)',color:'var(--navy)'},
+  {lbl:'Total cobros 2026',val:eur(D.tot_ing),delta:'▲ +2.523 € vs 09/10 — semana tranquila',dcol:'var(--green)'},
+  {lbl:'Flujo operativo real',val:'+ '+eur(170872),delta:'Sin dev. préstamo JTM (150k)',dcol:'var(--green)',color:'var(--green)'},
+  {lbl:'Resultado neto 2026',val:lab(neto),delta:'2ª semana consecutiva en positivo',dcol:'var(--green)',color:'var(--green)'},
+  {lbl:'Saldo real Sabadell',val:eur2(D.saldo_sab),delta:'IVA 3T sale el 20/10 (−30.118 €)',dcol:'#e67e22',color:'var(--navy)'},
   {lbl:'Santander 8521',val:eur2(D.saldo_san),delta:'Solo 2.200 € libres de 50k',dcol:'var(--red)',color:'var(--red)'},
   {lbl:'Total disponible crédito',val:eur(42200),delta:'Sabadell 40k + Santander 2,2k',dcol:'#e67e22',color:'#5a3808'}
 ].map(k=>`<div class="kpi"><div class="lbl">${k.lbl}</div><div class="val" style="${k.color?'color:'+k.color:''}">${k.val}</div><div class="delta" style="color:${k.dcol}">${k.delta}</div></div>`).join('');
 
-// Gráfico línea tesorería
 const bgColors=D.proySaldos.map(v=>v<D.limiteDesc?'rgba(168,65,47,0.9)':v<0?'rgba(230,126,34,0.75)':'rgba(79,121,66,0.75)');
 const limitePlugin={id:'limite',afterDraw(c){
   const{ctx,chartArea:{left,right,top,bottom},scales:{y}}=c;
@@ -281,18 +269,10 @@ const limitePlugin={id:'limite',afterDraw(c){
   ctx.setLineDash([]);ctx.fillStyle='#c0392b';ctx.font='bold 10px Segoe UI';
   ctx.fillText('Límite −90.000 €',left+6,yL-5);ctx.restore();
 }};
-const zonasPlugin={id:'zonas',beforeDraw(c){
-  const{ctx,chartArea:{left,right,top,bottom},scales:{y}}=c;
-  ctx.save();
-  const y0=y.getPixelForValue(0);
-  ctx.fillStyle='rgba(79,121,66,0.06)';ctx.fillRect(left,top,right-left,y0-top);
-  ctx.fillStyle='rgba(230,126,34,0.04)';ctx.fillRect(left,y0,right-left,bottom-y0);
-  ctx.restore();
-}};
-new Chart(document.getElementById('chLinea'),{type:'bar',plugins:[limitePlugin,zonasPlugin],
+new Chart(document.getElementById('chLinea'),{type:'bar',plugins:[limitePlugin],
   data:{labels:D.proyLabs,datasets:[{label:'Saldo',data:D.proySaldos,backgroundColor:bgColors,borderRadius:3}]},
   options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Saldo: '+eur(c.raw)}}},
-    scales:{y:{ticks:{callback:v=>eur(v)},grid:{color:'rgba(0,0,0,0.05)'},suggestedMin:-135000,suggestedMax:30000},
+    scales:{y:{ticks:{callback:v=>eur(v)},grid:{color:'rgba(0,0,0,0.05)'},suggestedMin:-130000,suggestedMax:25000},
             x:{ticks:{font:{size:9},maxRotation:0},grid:{display:false}}}}
 });
 
@@ -315,11 +295,11 @@ const mx_c=Math.max(...D.top_car.map(g=>g.v));
 document.getElementById('topCar').innerHTML=D.top_car.map(g=>`<div class="rowbar"><div class="l"><b>${g.k}</b><span>${eur(g.v)}</span></div><div class="bar"><i style="width:${(g.v/mx_c*100).toFixed(0)}%;background:var(--red)"></i></div></div>`).join('');
 
 const sit=[
-  `Cobros acumulados 2026: <b>${eur(D.tot_ing)}</b> · Pagos: <b>${eur(D.tot_car)}</b> · <b>Resultado neto: ${lab(neto)}</b> — por primera vez positivo en 2026 tras recuperar el impacto de la devolución JTM. Flujo operativo real (sin los 150k extraordinarios): <b style="color:var(--green)">+172.856 €</b>.`,
-  `<b>Semana destacada (03–09/10):</b> remesas igualas octubre (43.535 €, 07/10) + CD Lugo Fra G356 (12.100 €) + J.J. Sport varias fras. (19.548 €). Saldo Sabadell: <b>${eur2(D.saldo_sab)}</b> con la línea de crédito al 100% libre.`,
-  `<b>Eric Depolo P-11 (15.000 €) desplazado al 05/11</b> en el Excel — más de 90 días vencido. Su cobro en noviembre es crítico para no profundizar el descubierto de ese mes.`,
-  `<b>Noviembre dentro del límite: −83.001 €</b> (−90k es el tope). Diciembre supera el límite: <b style="color:var(--red)">−124.037 €</b> (+34.037 € sobre el tope). El IVA 2T 3º plazo (06/12, 4.873 €) es la palanca más fácil — solicitar aplazamiento AEAT.`,
-  `<b>Santander 8521 casi agotada:</b> −47.800 € de 50.000 € dispuestos. Solo 2.200 € libres. Total capacidad financiera disponible: 42.200 €. Para cubrir el exceso de diciembre (34.037 €) se necesitaría ampliar la línea Sabadell o generar cobros adicionales en nov–dic.`
+  `Cobros 2026: <b>${eur(D.tot_ing)}</b> · Pagos: <b>${eur(D.tot_car)}</b> · Resultado neto: <b style="color:var(--green)">${lab(neto)}</b>. Flujo operativo real (sin los 150k JTM): <b style="color:var(--green)">+170.872 €</b>. Semana tranquila.`,
+  `<b>Próximo evento crítico — 20/10:</b> IVA 3T (30.118 €) lleva el saldo de +17.449 € a −12.669 €. Dentro del límite pero ajustado. La línea Sabadell (40k) cubre el descubierto.`,
+  `<b>Eric Depolo P-11 (15.000 €) previsto 05/11</b> — más de 100 días vencido. Su cobro mejora noviembre de −76.784 € a −61.784 €. Sin él, noviembre se acerca peligrosamente al límite.`,
+  `<b>Noviembre dentro del límite: −76.784 €</b>. Diciembre supera el límite: <b style="color:var(--red)">−118.861 €</b> (+28.861 € sobre el tope). El IVA 2T 3º plazo (06/12, 4.873 €) es la palanca más fácil: solicitar aplazamiento AEAT reduce el exceso a 24k.`,
+  `<b>Santander 8521 casi agotada:</b> −47.800 € de 50.000 €. Solo 2.200 € libres. Para cubrir el exceso de diciembre (28.861 €) se necesitaría ampliar la línea Sabadell o cobrar Infovaticana/Laurentina (27.236 € pendientes).`
 ];
 document.getElementById('situacion').innerHTML=sit.map(s=>`<li style="margin-bottom:4px">${s}</li>`).join('');
 </script>

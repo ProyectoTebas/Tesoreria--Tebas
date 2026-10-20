@@ -3,305 +3,244 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tebas Coiduras · Estudio Jurídico — Tesorería 2026</title>
+<title>TC Estudio Sabadell — Cashflow hasta fin noviembre 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#f6f0e4;--paper:#fbf7ee;--card:#fffdf7;--ink:#33302a;--mut:#8a8170;--green:#4f7942;--red:#a8412f;--gold:#b08d3e;--navy:#2f4858;--border:#e6dcc6;--shadow:0 1px 3px rgba(90,70,30,.08)}
+:root{--bg:#f6f0e4;--card:#fffdf7;--ink:#33302a;--mut:#8a8170;--green:#4f7942;--red:#a8412f;--gold:#b08d3e;--navy:#2f4858;--border:#e6dcc6}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;padding:20px;max-width:1100px;margin:auto}
-.hd{border-bottom:2px solid var(--gold);padding-bottom:12px;margin-bottom:16px}
-.firm{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'Segoe UI',sans-serif;font-weight:600}
-h1{font-size:24px;margin:4px 0 2px;font-weight:600}
-h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:22px 0 9px;font-family:'Segoe UI',sans-serif;border-left:3px solid var(--gold);padding-left:9px}
-.sub{color:var(--mut);font-size:12px;font-family:'Segoe UI',sans-serif}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:14px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 15px;box-shadow:var(--shadow)}
-.kpi .lbl{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-family:'Segoe UI',sans-serif}
-.kpi .val{font-size:20px;font-weight:600;margin-top:4px}
-.kpi .delta{font-size:10.5px;margin-top:2px;font-family:'Segoe UI',sans-serif}
-.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
-.grid11{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;box-shadow:var(--shadow)}
-.tbl{width:100%;border-collapse:collapse;font-size:12px}
-.tbl th{text-align:left;color:var(--mut);font-weight:600;padding:6px 7px;border-bottom:2px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-family:'Segoe UI',sans-serif}
-.tbl td{padding:6px 8px;border-bottom:1px solid #efe7d4;vertical-align:middle}
-.tbl tr:last-child td{border-bottom:none}
-.num{text-align:right;font-variant-numeric:tabular-nums;font-family:'Segoe UI',sans-serif}
-.pos{color:var(--green)} .neg{color:var(--red)}
-.bar{height:7px;border-radius:4px;background:#ece2cc;overflow:hidden;margin-top:3px}
-.bar>i{display:block;height:100%}
-.highlight{font-size:11.5px;color:#1a4a1a;background:#e8f5e9;border-left:3px solid var(--green);padding:9px 12px;border-radius:5px;margin:10px 0;font-family:'Segoe UI',sans-serif}
-.alert-red{font-size:11.5px;color:#5a1a0a;background:#fdecea;border-left:3px solid #c0392b;padding:9px 12px;border-radius:5px;margin:10px 0;font-family:'Segoe UI',sans-serif}
-.alert-amber{font-size:11.5px;color:#5a3808;background:#fff3e0;border-left:3px solid #e67e22;padding:9px 12px;border-radius:5px;margin:10px 0;font-family:'Segoe UI',sans-serif}
-.note{font-size:11.5px;color:#6b5f44;background:#f3ead4;border-left:3px solid var(--gold);padding:9px 12px;border-radius:5px;margin:10px 0;font-family:'Segoe UI',sans-serif}
-.ctrls{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
-.ctrls button{background:var(--paper);color:var(--navy);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:'Segoe UI',sans-serif}
-.ctrls button.on{background:var(--navy);color:#fbf7ee;border-color:var(--navy)}
-.rowbar{margin:6px 0;font-family:'Segoe UI',sans-serif}
-.rowbar .l{display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px}
-.rowbar .l b{font-weight:600}
-.scrollbox{max-height:300px;overflow-y:auto;padding-right:5px}
-.scrollbox::-webkit-scrollbar{width:6px}.scrollbox::-webkit-scrollbar-thumb{background:#d8cdb4;border-radius:3px}
-canvas{max-height:260px}
-.sec{margin-top:14px}
-.tag{display:inline-block;font-size:9px;font-weight:700;color:#fff;border-radius:3px;padding:1px 5px;margin-left:4px;font-family:'Segoe UI',sans-serif;vertical-align:middle}
-.tag-in{background:var(--green)} .tag-out{background:var(--red)} .tag-amber{background:#e67e22} .tag-ok{background:#4f7942}
-.hl-green{background:#f0faf0} .hl-red{background:#fff0f0} .hl-amber{background:#fff8ee}
-.proj-table{width:100%;border-collapse:collapse;font-size:12px;font-family:'Segoe UI',sans-serif}
-.proj-table th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em}
-.proj-table td{padding:6px 10px;border-bottom:1px solid var(--border)}
-.proj-table tr:last-child td{border-bottom:none}
-.proj-mes td{background:#e8eef4;font-weight:700;font-size:10px;text-transform:uppercase;color:var(--navy);padding:4px 10px}
-.proj-cierre td{background:#f0f4ff;font-weight:700}
-.proj-cobro td{background:#f0faf0}
-.proj-desc td{background:#fdecea;font-weight:600}
-.saldo-ok{color:var(--green);font-weight:700}
-.saldo-warn{color:#e67e22;font-weight:700}
-.saldo-red{color:var(--red);font-weight:700}
-@media(max-width:820px){.kpis,.grid11{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',sans-serif;padding:20px;max-width:980px;margin:auto}
+.hd{border-bottom:3px solid var(--gold);padding-bottom:12px;margin-bottom:18px}
+.firm{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:22px;margin:4px 0 2px;font-weight:700;font-family:Georgia,serif}
+.sub{color:var(--mut);font-size:12px}
+h2{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:22px 0 10px;border-left:3px solid var(--gold);padding-left:9px}
+.esc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.esc{border-radius:10px;padding:20px}
+.esc-a{background:#fdecea;border:2px solid #c0392b}
+.esc-b{background:#fff3e0;border:2px solid #e67e22}
+.esc .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.esc .saldo-big{font-size:34px;font-weight:800;font-family:Georgia,serif;line-height:1.1;margin:4px 0 10px}
+.esc .rows{border-top:1px solid rgba(0,0,0,0.1);padding-top:10px}
+.esc .row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid rgba(0,0,0,0.07)}
+.esc .row:last-child{border-bottom:none;font-weight:700;font-size:14px;padding-top:8px}
+.esc .alerta{margin-top:12px;padding:10px 12px;border-radius:7px;font-size:13px;font-weight:700;text-align:center}
+.al-red{background:#c0392b;color:#fff}
+.al-amber{background:#d35400;color:#fff}
+.nota{padding:11px 14px;border-radius:7px;margin:10px 0;font-size:12.5px;line-height:1.7}
+.n-red{background:#fdecea;border-left:4px solid #c0392b;color:#5a1a0a}
+.n-amber{background:#fff3e0;border-left:4px solid #e67e22;color:#5a3808}
+.n-gold{background:#f3ead4;border-left:4px solid var(--gold);color:#5a4a2a}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:20px;box-shadow:0 1px 4px rgba(90,70,30,.07)}
+canvas{max-height:300px}
+.impuestos{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:16px;box-shadow:0 1px 3px rgba(90,70,30,.06)}
+.impuestos th{background:var(--navy);color:#fff;padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.impuestos th.r{text-align:right}
+.impuestos td{padding:7px 12px;border-bottom:1px solid #efe7d4}
+.impuestos tr:last-child td{border-bottom:none;font-weight:700;background:#fdecea}
+.impuestos .r{text-align:right;font-variant-numeric:tabular-nums}
+.impuestos .iva303{background:#fff0f0;font-weight:600}
+.cf{width:100%;border-collapse:collapse;font-size:12px;background:var(--card);border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:0 1px 4px rgba(90,70,30,.07);margin-bottom:16px}
+.cf th{background:var(--navy);color:#fff;padding:8px 11px;font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.cf th.r{text-align:right}
+.cf td{padding:7px 11px;border-bottom:1px solid #efe7d4;vertical-align:top}
+.cf tr:last-child td{border-bottom:none}
+.cf .r{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.cf .mes{background:#e8eef4;font-weight:700;font-size:10px;text-transform:uppercase;color:var(--navy);letter-spacing:.05em}
+.cf .cierre{background:#e8eef4;font-weight:800;font-size:13px}
+.cf .critico{background:#fff8ee}
+.cf .cobro{background:#f0faf0}
+.cf .cierre-final{font-weight:800;font-size:13px}
+.ok{color:#4f7942} .ko{color:#a8412f}
+@media(max-width:650px){.esc-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <div class="hd">
- <div class="firm">Tebas Coiduras · Estudio Jurídico</div>
- <h1>Informe de Tesorería · Ejercicio 2026</h1>
- <div class="sub">Cashflow consolidado · <b>Actualizado 16/10/2026</b> · 4 cuentas bancarias · Límite descubierto: −90.000 € (Sabadell 40k + Santander 50k)</div>
+  <div class="firm">Tebas Coiduras · Estudio Jurídico — Banco Sabadell</div>
+  <h1>Cashflow hasta fin de noviembre 2026</h1>
+  <div class="sub">Pestaña TC ESTUDIO SABADELL · <b>Póliza de crédito: −40.000 €</b> · Corte 20/10/2026 · 🟢 dentro póliza · 🔴 excede póliza</div>
 </div>
 
-<div class="kpis" id="kpis"></div>
-
-<div class="highlight">✅ <b>Resultado neto 2026 positivo por segundo semana consecutiva: +20.872 €.</b> Flujo operativo real (sin dev. préstamo JTM 150k): <b>+170.872 €</b>. Semana tranquila — gastos corrientes y cobros menores.</div>
-<div class="alert-red">🚨 <b>DICIEMBRE EN DESCUBIERTO: −118.861 €</b> — supera el límite de −90.000 € en 28.861 €. IVA 2T 3º plazo (06/12) + nóminas navidad + SS diciembre.</div>
-<div class="alert-amber">🔔 <b>IVA 3T (20/10) — 30.118 €:</b> lleva el saldo de +17.449 € a −12.669 €. Dentro del límite pero ajustado.</div>
-<div class="alert-amber">🔔 <b>Eric Depolo P-11 — 15.000 €</b> previsto 05/11 en Excel. Más de 100 días vencido. Reclamar activamente.</div>
-<div class="alert-amber">🔔 <b>Santander 8521 — saldo −47.800 €:</b> solo 2.200 € libres. Total disponible crédito: <b>42.200 €</b>.</div>
-<div class="note">Semana 10–16/10: cobros menores (Zitum Fruit 871 €, Liguerre 779 €, Quirón Prevención 173 €) y gastos corrientes (Registradores 2.677 €, Endesa Gas 340 €, suministros). Traspaso entre cuentas propias 700 €.</div>
-
-<h2>Línea de tesorería y uso de crédito</h2>
-<div class="card">
-  <canvas id="chLinea" style="max-height:260px"></canvas>
-  <div style="margin-top:8px;font-family:'Segoe UI',sans-serif;font-size:11px;color:var(--mut)">
-    Saldo real 16/10: <b>17.449 €</b>. El IVA 3T (20/10, −30.118 €) lleva el saldo a −12.669 €. Noviembre dentro del límite (−76.784 €). Diciembre supera el límite (−118.861 €).
+<div class="esc-grid">
+  <div class="esc esc-a">
+    <div class="label" style="color:#c0392b">🔴 Escenario A — Con IVA Mod. 303 pagado</div>
+    <div style="font-size:12px;color:#888;margin-bottom:2px">Situación real hoy 20/10</div>
+    <div class="saldo-big" style="color:#a8412f">−44.265 €</div>
+    <div class="rows">
+      <div class="row"><span>Exceso sobre póliza hoy</span><span style="color:#c0392b">+4.265 € 🔴</span></div>
+      <div class="row"><span>Cierre octubre</span><span style="color:#c0392b">−55.900 € 🔴</span></div>
+      <div class="row"><span>20/11 — MOD 303 IVA 2T</span><span style="color:#c0392b">−111.300 € 🔴</span></div>
+      <div class="row"><span>Cierre noviembre</span><span style="color:#c0392b"><b>−122.362 €</b></span></div>
+      <div class="row"><span>🔴 Exceso sobre póliza (−40k)</span><span style="color:#c0392b"><b>+82.362 €</b></span></div>
+    </div>
+    <div class="alerta al-red">Necesario inyectar: <b>82.362 €</b></div>
+  </div>
+  <div class="esc esc-b">
+    <div class="label" style="color:#d35400">🟡 Escenario B — Sin IVA Mod. 303</div>
+    <div style="font-size:12px;color:#888;margin-bottom:2px">Hipotético sin los 33.382 € del 303</div>
+    <div class="saldo-big" style="color:#4f7942">−10.883 €</div>
+    <div class="rows">
+      <div class="row"><span>Margen sobre póliza hoy</span><span style="color:#4f7942">29.117 € 🟢</span></div>
+      <div class="row"><span>Cierre octubre</span><span style="color:#4f7942">−22.519 € 🟢</span></div>
+      <div class="row"><span>03/11 — nóminas (supera póliza)</span><span style="color:#c0392b">−29.797 € 🔴</span></div>
+      <div class="row"><span>20/11 — MOD 303 IVA 2T</span><span style="color:#c0392b">−77.918 € 🔴</span></div>
+      <div class="row"><span>Cierre noviembre</span><span style="color:#c0392b"><b>−88.981 €</b></span></div>
+      <div class="row"><span>🔴 Exceso sobre póliza (−40k)</span><span style="color:#c0392b"><b>+48.981 €</b></span></div>
+    </div>
+    <div class="alerta al-amber">Necesario inyectar: <b>48.981 €</b></div>
   </div>
 </div>
 
-<h2>Proyección caja hasta cierre 2026</h2>
-<div class="card">
-  <table class="proj-table">
-    <thead><tr><th>Fecha</th><th>Concepto clave</th><th style="text-align:right">Ingreso</th><th style="text-align:right">Cargo</th><th style="text-align:right">Saldo</th><th>Estado</th></tr></thead>
-    <tbody>
-      <tr><td colspan="4"><b>Saldo real Sabadell 16/10</b></td><td class="num saldo-ok">+17.449 €</td><td><span class="tag tag-ok">✅</span></td></tr>
-
-      <tr class="proj-mes"><td colspan="6">OCTUBRE — RESTO</td></tr>
-      <tr class="proj-desc"><td>20/10</td><td>🔴 Liquidación IVA 3T + IRPF 3T + Mod. 115 + 202</td><td class="num pos">+684 €</td><td class="num neg">−30.802 €</td><td class="num saldo-warn">−12.669 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr><td>21–27/10</td><td>Gastos corrientes varios</td><td></td><td class="num neg">−1.503 €</td><td class="num saldo-warn">−14.172 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr><td>27–31/10</td><td>Remesa + SS + Diego nov + alquileres</td><td class="num pos">+3.977 €</td><td class="num neg">−19.611 €</td><td class="num saldo-red">−29.806 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-cierre"><td colspan="4">📅 Cierre octubre</td><td class="num saldo-warn">−29.806 €</td><td><span class="tag tag-amber">⚠️ Crédito</span></td></tr>
-
-      <tr class="proj-mes"><td colspan="6">NOVIEMBRE 2026</td></tr>
-      <tr class="proj-cobro"><td>01–05/11</td><td>Remesa igualas nov (22.731 €) + Eric Depolo P-11 (15k previsto)</td><td class="num pos">+37.731 €</td><td class="num neg">−41.798 €</td><td class="num saldo-warn">−33.873 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-desc"><td>06–30/11</td><td>🔴 IVA 5º plazo + IVA 2T 2º plazo + Chocarro incentivos + JTL + SS + nóminas + tarjetas</td><td class="num pos">+10.075 €</td><td class="num neg">−53.986 €</td><td class="num saldo-red">−76.784 €</td><td><span class="tag tag-amber">⚠️</span></td></tr>
-      <tr class="proj-cierre"><td colspan="4">📅 Cierre noviembre</td><td class="num saldo-warn">−76.784 €</td><td><span class="tag tag-amber">⚠️ Dentro límite</span></td></tr>
-
-      <tr class="proj-mes"><td colspan="6">DICIEMBRE 2026</td></tr>
-      <tr><td>01–05/12</td><td>Remesa igualas dic (24.454 €) + nóminas + IVA 6º plazo + alquileres</td><td class="num pos">+30.919 €</td><td class="num neg">−48.303 €</td><td class="num saldo-red">−94.168 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr class="proj-desc"><td>06/12</td><td>🔴 IVA 2T 3º plazo (4.230 €) + seguro RC (643 €)</td><td></td><td class="num neg">−4.873 €</td><td class="num saldo-red">−99.041 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr><td>08–18/12</td><td>JTL Fra enero + Chocarro + registradores + cobros</td><td class="num pos">+5.105 €</td><td class="num neg">−12.731 €</td><td class="num saldo-red">−106.667 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr class="proj-desc"><td>19/12</td><td>🔴 Nóminas extra navidad</td><td></td><td class="num neg">−8.806 €</td><td class="num saldo-red">−115.473 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr><td>22–31/12</td><td>Remesas + facturación + SS fin de año</td><td class="num pos">+3.405 €</td><td class="num neg">−6.793 €</td><td class="num saldo-red">−118.861 €</td><td><span class="tag tag-out">🚨</span></td></tr>
-      <tr style="background:#fdecea;font-weight:700"><td colspan="4">📅 <b>Cierre diciembre 2026</b></td><td class="num saldo-red"><b>−118.861 €</b></td><td><span class="tag tag-out">🚨 +28.861 € sobre límite</span></td></tr>
-    </tbody>
-  </table>
-  <div style="margin-top:12px;font-family:'Segoe UI',sans-serif;font-size:12px;color:#5a1a0a;background:#fdecea;padding:12px 14px;border-radius:6px;border-left:3px solid #c0392b">
-    <b>🚨 MEDIDAS PARA DICIEMBRE (28.861 € sobre límite):</b><br>
-    A · Aplazar IVA 2T 3º plazo (06/12, 4.873 €) con AEAT<br>
-    B · Ampliar línea de crédito Sabadell<br>
-    C · Anticipar cobros de diciembre a noviembre<br>
-    D · Cobrar Infovaticana / Laurentina (27.236 € pendientes)
-  </div>
+<div class="nota n-gold">
+  <b>Diferencia entre escenarios: 33.382 € = el IVA Mod. 303.</b> Sin el 303, hoy el saldo estaría dentro de la póliza (−10.883 €, margen 29.117 €) y octubre también cerraría dentro. Sin embargo, las nóminas del 03/11 llevan el saldo a −29.797 € en ambos escenarios — en el B por primera vez se supera la póliza en noviembre.
 </div>
 
-<h2>Evolución mensual cashflow 2026</h2>
-<div class="ctrls">
-  <button data-m="bars" class="on">Cobros vs Pagos</button>
-  <button data-m="neto">Resultado neto</button>
-  <button data-m="acum">Neto acumulado</button>
-</div>
-<div class="card"><canvas id="chTime"></canvas></div>
+<h2>Impuestos pagados hoy 20/10</h2>
+<table class="impuestos">
+  <thead><tr><th>Modelo / Concepto</th><th class="r">Importe</th></tr></thead>
+  <tbody>
+    <tr class="iva303"><td><b>Mod. 303 — Liquidación IVA 3T</b></td><td class="r ko"><b>33.381,58 €</b></td></tr>
+    <tr><td>Mod. 111 — Retenciones IRPF trabajadores 3T</td><td class="r ko">12.817,60 €</td></tr>
+    <tr><td>IVA retenido Javier Tebas Llanas 3T</td><td class="r ko">4.200,00 €</td></tr>
+    <tr><td>Mod. 115 — Retenciones IRPF alquileres 3T</td><td class="r ko">2.294,29 €</td></tr>
+    <tr><td>Mod. 202 — 2º pago fraccionado IS</td><td class="r ko">1.351,26 €</td></tr>
+    <tr><td>Fra. Navarro y Urbano SL — servicios sep</td><td class="r ko">2.299,00 €</td></tr>
+    <tr><td>Esofitec Global Solutions SL</td><td class="r ko">429,55 €</td></tr>
+    <tr><td>Aquaservice</td><td class="r ko">70,91 €</td></tr>
+    <tr><td>TOTAL SALIDAS 20/10</td><td class="r ko"><b>56.844,19 €</b></td></tr>
+  </tbody>
+</table>
 
-<div class="grid2 sec">
-  <div class="card"><h3>Origen de los cobros</h3><canvas id="chCli"></canvas></div>
-  <div class="card"><h3>Reparto de gastos</h3><canvas id="chGto"></canvas></div>
-</div>
+<h2>Evolución del saldo — 🟢 dentro póliza · 🔴 excede póliza</h2>
+<div class="chart-card"><canvas id="chComp"></canvas></div>
 
-<h2>Novedades 10–16/10 · 13 operaciones</h2>
-<div class="card">
-  <table class="tbl">
-    <thead><tr><th>Fecha</th><th>Concepto</th><th class="num">Ingreso</th><th class="num">Cargo</th></tr></thead>
-    <tbody>
-      <tr class="hl-green"><td>14/10</td><td>Zitum Fruit SL Fra G384 <span class="tag tag-in">cobro</span></td><td class="num pos">871,20</td><td></td></tr>
-      <tr class="hl-green"><td>15/10</td><td>Liguerre Enoturismo SL Fra C1073 <span class="tag tag-in">cobro</span></td><td class="num pos">778,82</td><td></td></tr>
-      <tr class="hl-green"><td>13/10</td><td>Quirón Prevención Fra G369 <span class="tag tag-in">cobro</span></td><td class="num pos">172,53</td><td></td></tr>
-      <tr><td>16/10</td><td>Traspaso entre cuentas Sabadell ↔ Santander</td><td class="num pos">700,00</td><td class="num neg">700,00</td></tr>
-      <tr><td>12/10</td><td>Asociación Colegio Registradores de España</td><td></td><td class="num neg">2.676,88</td></tr>
-      <tr><td>14/10</td><td>Endesa Energía Gas</td><td></td><td class="num neg">340,23</td></tr>
-      <tr><td>15/10</td><td>Salvador suministro de oficina</td><td></td><td class="num neg">205,53</td></tr>
-      <tr><td>14/10</td><td>Revista Huesca Aki</td><td></td><td class="num neg">191,18</td></tr>
-      <tr><td>15/10</td><td>Grenke Rent — renting impresoras</td><td></td><td class="num neg">178,96</td></tr>
-      <tr><td>15/10</td><td>Newsar Logística SL (MRW)</td><td></td><td class="num neg">57,09</td></tr>
-      <tr><td>12/10</td><td>Copiadoras Digitales de Huesca</td><td></td><td class="num neg">152,02</td></tr>
-      <tr><td>14/10</td><td>Axesor</td><td></td><td class="num neg">3,93</td></tr>
-      <tr style="font-weight:700;background:#f3ead4"><td colspan="2">TOTALES PERÍODO</td><td class="num pos">2.522,55</td><td class="num neg">4.505,82</td></tr>
-    </tbody>
-  </table>
-</div>
+<h2>Cashflow detallado — 🟢 dentro póliza (−40k) · 🔴 excede póliza</h2>
+<table class="cf">
+  <thead>
+    <tr>
+      <th>Fecha</th><th>Concepto</th>
+      <th class="r">Ingreso</th><th class="r">Cargo</th>
+      <th class="r">Esc. A — con 303</th>
+      <th class="r">Esc. B — sin 303</th>
+    </tr>
+  </thead>
+  <tbody id="cfBody"></tbody>
+</table>
 
-<h2>Posición líneas de crédito</h2>
-<div class="card">
-  <table class="tbl">
-    <thead><tr><th>Cuenta</th><th class="num">Límite</th><th class="num">Saldo actual</th><th class="num">Disponible</th><th>Estado</th></tr></thead>
-    <tbody>
-      <tr class="hl-green"><td>Banco Sabadell (línea crédito 40k)</td><td class="num">40.000 €</td><td class="num pos">+17.449 €</td><td class="num pos">40.000 €</td><td><span class="tag tag-ok">✅ Libre</span></td></tr>
-      <tr class="hl-amber"><td>Santander ...8521 (línea crédito 50k)</td><td class="num">50.000 €</td><td class="num neg">−47.800 €</td><td class="num neg" style="font-weight:700">2.200 €</td><td><span class="tag tag-amber">⚠️ Casi agotada</span></td></tr>
-      <tr style="font-weight:700;background:#fff3e0"><td>TOTAL DISPONIBLE</td><td class="num">90.000 €</td><td class="num pos">+17.449 €</td><td class="num" style="font-weight:700;color:#e67e22">42.200 €</td><td><span class="tag tag-amber">⚠️ Limitado</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<h2>Top movimientos acumulados</h2>
-<div class="grid11">
-  <div class="card"><h3>Top cobros</h3><div class="scrollbox"><div id="topIng"></div></div></div>
-  <div class="card"><h3>Top gastos</h3><div class="scrollbox"><div id="topCar"></div></div></div>
-</div>
-
-<h2>Resumen ejecutivo</h2>
-<div class="card"><ul id="situacion" style="margin:0;padding-left:18px;line-height:1.8;font-size:13.5px"></ul></div>
-
-<div class="sub" style="margin-top:18px">Informe generado · Tebas Coiduras Estudio Jurídico · ejercicio 2026 · corte 16/10/2026 · 1.176 movimientos.</div>
+<div class="nota n-red">🔴 <b>Escenario A (real):</b> necesario inyectar <b>82.362 €</b> para no superar la póliza Sabadell a fin de noviembre.</div>
+<div class="nota n-amber">🟡 <b>Escenario B (sin 303):</b> sin el IVA 303 octubre cierra dentro de la póliza. Pero las nóminas del 03/11 (−18.561 €) superan la póliza por primera vez en noviembre. Necesario inyectar <b>48.981 €</b>.</div>
 
 <script>
-const D={
-  tot_ing:1173176.53, tot_car:1152304.04, n_mov:1176,
-  saldo_sab:17449.14, saldo_san:-47800.09,
-  meses:[
-    {mes:"01",ing:124770,car:97263,neto:27507},
-    {mes:"02",ing:123145,car:117884,neto:5261},
-    {mes:"03",ing:191633,car:158335,neto:33298},
-    {mes:"04",ing:58142,car:109851,neto:-51709},
-    {mes:"05",ing:81589,car:55214,neto:26375},
-    {mes:"06",ing:99599,car:85459,neto:14140},
-    {mes:"07",ing:97468,car:161924,neto:-64456},
-    {mes:"08",ing:75213,car:74575,neto:638},
-    {mes:"09",ing:237136,car:233267,neto:3869},
-    {mes:"10",ing:89143,car:110449,neto:-21306},
-    {mes:"11",ing:49537,car:96577,neto:-47040},
-    {mes:"12",ing:39633,car:81772,neto:-42139}
-  ],
-  clientes:[
-    {k:"Facturación jurídica/legal (casos)",v:626000},
-    {k:"Remesas igualas (gestión/asesoría)",v:430000},
-    {k:"Intragrupo + refacturaciones",v:55000},
-    {k:"Otros",v:62177}
-  ],
-  gastos:[
-    {k:"Dev. Préstamo J. Tebas (150k sep)",v:150000},
-    {k:"Personal · nóminas",v:109000},
-    {k:"Seguridad Social",v:82000},
-    {k:"Externos legales (JTL + Chocarro)",v:97000},
-    {k:"Impuestos (IRPF + IVA)",v:60000},
-    {k:"Arval renting",v:25777},
-    {k:"Infovaticana / Laurentina",v:27236},
-    {k:"Tarjetas despacho",v:30000}
-  ],
-  top_ing:[
-    {k:"Remesa igualas (acumulado)",v:242071},
-    {k:"J.J Sport Fra. G-91 · Due Diligence CF Talavera",v:84700},
-    {k:"CD Eldense S.A.D. Fras G358+G359",v:62315},
-    {k:"Costas Randy Nteka Fra G67 (23/09)",v:53615},
-    {k:"J.J. Sport — Caso Baba Idrissu",v:8655},
-    {k:"J.J. Sport — Fra. G163 Caso Laffer",v:6305},
-    {k:"CD Lugo SAD Fra G356 (07/10)",v:12100},
-    {k:"KARPATY FC Fra E-4",v:40000},
-    {k:"J.J Sport Fra. G-92 · Operación S. Faye",v:36300},
-    {k:"Club Deportivo Eldense Fra G142",v:36300},
-    {k:"Cobro Fras. pendientes J.J Sport",v:31460}
-  ],
-  top_car:[
-    {k:"Dev. Préstamo J. Tebas (150k sep)",v:150000},
-    {k:"SS Huesca + Madrid (acumulado)",v:82000},
-    {k:"JTL servicios 2026 (acumulado)",v:82000},
-    {k:"Nóminas personal (acumulado)",v:109000},
-    {k:"Arval renting",v:25777},
-    {k:"HARVESTOP TRADING · caso Karpaty",v:23505},
-    {k:"Infovaticana / Laurentina",v:27236},
-    {k:"Tarjetas crédito despacho",v:30000},
-    {k:"Chocarro Abogados (acumulado)",v:23000},
-    {k:"Asociación Colegio Registradores (12/10)",v:2677}
-  ],
-  proyLabs:["16/10\nActual","20/10\nIVA 3T\n−30k","Cierre\nOct","05/11\nDepolo\n+15k","Cierre\nNov","06/12\nIVA 2T","19/12\nNavidad","Cierre\nDic"],
-  proySaldos:[17449,-12669,-29806,-33873,-76784,-99041,-115473,-118861],
-  limiteDesc:-90000
-};
+const LIMITE = -40000;
+const eur = v => new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+const sc = v => v < LIMITE ? `<span class="ko">${eur(v)} 🔴</span>` : `<span class="ok">${eur(v)} 🟢</span>`;
 
-const eur=v=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-const eur2=v=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(v);
-const col=v=>v>=0?'var(--green)':'var(--red)';
-const lab=v=>v>=0?'+ '+eur(v):eur(v);
-const neto=D.tot_ing-D.tot_car;
+// Datos de la tabla
+const rows = [
+  {tipo:'inicio', fecha:'', concepto:'Saldo real Sabadell 20/10 — tras todos los impuestos 3T', ing:0, car:0, sA:-44265, sB:-10883},
+  {tipo:'mes', concepto:'OCTUBRE — RESTO'},
+  {tipo:'cobro', fecha:'23/10', concepto:'Remesa Fra. Leal Collection (+4.420 €) − Procurador Eduardo (−2.361 €)', ing:4420, car:2361, sA:-42206, sB:-8824},
+  {tipo:'normal', fecha:'28–29/10', concepto:'Telefónica + Limcon limpieza AC', ing:0, car:777, sA:-42983, sB:-9601},
+  {tipo:'normal', fecha:'30/10', concepto:'SS Huesca (4.327 €) + SS Madrid (4.690 €) + Alq. despacho Madrid-Ideas del Sur (3.091 €) + CAI (210 €)', ing:0, car:12318, sA:-55301, sB:-21920},
+  {tipo:'normal', fecha:'31/10', concepto:'Nóminas externas Benigno + Grace', ing:0, car:599, sA:-55900, sB:-22519},
+  {tipo:'cierre', fecha:'', concepto:'📅 CIERRE OCTUBRE', ing:0, car:0, sA:-55900, sB:-22519},
+  {tipo:'mes', concepto:'NOVIEMBRE 2026'},
+  {tipo:'cobro', fecha:'01/11', concepto:'Remesas igualas (+18.000) + Godafoss (+303) − Alq. Huesca (1.040) − Alq. Madrid Ideas (3.033) − Esofitec (1.163) − Diego nov (1.802)', ing:18303, car:7038, sA:-44618, sB:-11236},
+  {tipo:'critico', fecha:'03/11', concepto:'Nóminas todo el personal: Susana, Sara, Sergio, Hugo (+Bonus), Adil, Teresa, María, Jisela, Beatriz', ing:0, car:18561, sA:-63179, sB:-29797},
+  {tipo:'critico', fecha:'04/11', concepto:'Nómina Antonio Chocarro (2.730 €) + Computer Huesca (1.358 €)', ing:0, car:4088, sA:-67267, sB:-33885},
+  {tipo:'critico', fecha:'05/11', concepto:'Remesas (+7.414) − 5º Pago IVA 1T (5.017) − Navarro y Urbano oct (3.630) − Tarjetas despacho (4.124) − Vuelos Lucio (1.800) − JTL tarjeta (1.146) − IVA 2021 reclasif. (4.063)', ing:7414, car:19780, sA:-79633, sB:-46199},
+  {tipo:'normal', fecha:'06/11', concepto:'Limpiezas VAL (348 €)', ing:0, car:348, sA:-79981, sB:-46547},
+  {tipo:'normal', fecha:'11/11', concepto:'Asociación Colegio Registradores (921 €) + Copiadoras Huesca (427 €)', ing:0, car:1348, sA:-81329, sB:-47895},
+  {tipo:'normal', fecha:'13/11', concepto:'Fra. Contables Externos mes noviembre (2.632 €)', ing:0, car:2632, sA:-83961, sB:-50527},
+  {tipo:'cobro', fecha:'14–17/11', concepto:'Remesas cobros (+436 +1.574 +352) − Endesa (289 €)', ing:2362, car:289, sA:-82255, sB:-48821},
+  {tipo:'normal', fecha:'18–19/11', concepto:'Desinfecciones Unión (394 €) + Chocarro Abogados oct (3.630 €) + Telefónica (465 €)', ing:0, car:4489, sA:-86744, sB:-53310},
+  {tipo:'critico', fecha:'20/11', concepto:'🔴 MOD 303 — IVA 2T 2026', ing:0, car:23800, sA:-110544, sB:-77110},
+  {tipo:'normal', fecha:'21/11', concepto:'Esofitec A3bank+Scan+Cloud (661 €) + Esofitec (410 €) + Revista 4Esquinas (2.118 €)', ing:0, car:3189, sA:-113733, sB:-80299},
+  {tipo:'cobro', fecha:'25/11', concepto:'Remesa facturación cuotas mensuales (+4.591 €)', ing:4591, car:0, sA:-109142, sB:-75708},
+  {tipo:'normal', fecha:'26–27/11', concepto:'Alq. AC Ideas del Sur (3.031 €) + Alq. Huesca (1.040 €) − Remesas (+940 €)', ing:940, car:4071, sA:-112273, sB:-78839},
+  {tipo:'critico', fecha:'28/11', concepto:'SS Huesca (4.300 €) + SS Madrid (3.459 €) + Chocarro Abogados incentivos (832 €)', ing:0, car:8591, sA:-120864, sB:-87430},
+  {tipo:'normal', fecha:'29/11', concepto:'Limcon limpieza AC (419 €)', ing:0, car:419, sA:-121283, sB:-87849},
+  {tipo:'cierre-a', fecha:'', concepto:'📅 CIERRE NOVIEMBRE — Escenario A (con 303)', ing:0, car:0, sA:-122362, sB:null},
+  {tipo:'cierre-b', fecha:'', concepto:'📅 CIERRE NOVIEMBRE — Escenario B (sin 303)', ing:0, car:0, sA:null, sB:-88981},
+];
 
-document.getElementById('kpis').innerHTML=[
-  {lbl:'Total cobros 2026',val:eur(D.tot_ing),delta:'▲ +2.523 € vs 09/10 — semana tranquila',dcol:'var(--green)'},
-  {lbl:'Flujo operativo real',val:'+ '+eur(170872),delta:'Sin dev. préstamo JTM (150k)',dcol:'var(--green)',color:'var(--green)'},
-  {lbl:'Resultado neto 2026',val:lab(neto),delta:'2ª semana consecutiva en positivo',dcol:'var(--green)',color:'var(--green)'},
-  {lbl:'Saldo real Sabadell',val:eur2(D.saldo_sab),delta:'IVA 3T sale el 20/10 (−30.118 €)',dcol:'#e67e22',color:'var(--navy)'},
-  {lbl:'Santander 8521',val:eur2(D.saldo_san),delta:'Solo 2.200 € libres de 50k',dcol:'var(--red)',color:'var(--red)'},
-  {lbl:'Total disponible crédito',val:eur(42200),delta:'Sabadell 40k + Santander 2,2k',dcol:'#e67e22',color:'#5a3808'}
-].map(k=>`<div class="kpi"><div class="lbl">${k.lbl}</div><div class="val" style="${k.color?'color:'+k.color:''}">${k.val}</div><div class="delta" style="color:${k.dcol}">${k.delta}</div></div>`).join('');
-
-const bgColors=D.proySaldos.map(v=>v<D.limiteDesc?'rgba(168,65,47,0.9)':v<0?'rgba(230,126,34,0.75)':'rgba(79,121,66,0.75)');
-const limitePlugin={id:'limite',afterDraw(c){
-  const{ctx,chartArea:{left,right,top,bottom},scales:{y}}=c;
-  const yL=y.getPixelForValue(D.limiteDesc);
-  ctx.save();
-  ctx.fillStyle='rgba(168,65,47,0.07)';ctx.fillRect(left,yL,right-left,bottom-yL);
-  ctx.strokeStyle='#c0392b';ctx.lineWidth=2;ctx.setLineDash([6,4]);
-  ctx.beginPath();ctx.moveTo(left,yL);ctx.lineTo(right,yL);ctx.stroke();
-  ctx.setLineDash([]);ctx.fillStyle='#c0392b';ctx.font='bold 10px Segoe UI';
-  ctx.fillText('Límite −90.000 €',left+6,yL-5);ctx.restore();
-}};
-new Chart(document.getElementById('chLinea'),{type:'bar',plugins:[limitePlugin],
-  data:{labels:D.proyLabs,datasets:[{label:'Saldo',data:D.proySaldos,backgroundColor:bgColors,borderRadius:3}]},
-  options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Saldo: '+eur(c.raw)}}},
-    scales:{y:{ticks:{callback:v=>eur(v)},grid:{color:'rgba(0,0,0,0.05)'},suggestedMin:-130000,suggestedMax:25000},
-            x:{ticks:{font:{size:9},maxRotation:0},grid:{display:false}}}}
+const tbody = document.getElementById('cfBody');
+rows.forEach(r => {
+  const tr = document.createElement('tr');
+  if(r.tipo === 'mes'){
+    tr.className = 'mes';
+    tr.innerHTML = `<td colspan="6">${r.concepto}</td>`;
+  } else if(r.tipo === 'inicio'){
+    tr.innerHTML = `<td colspan="4"><b>${r.concepto}</b></td><td class="r">${sc(r.sA)}</td><td class="r">${sc(r.sB)}</td>`;
+  } else if(r.tipo === 'cierre'){
+    tr.className = 'cierre';
+    tr.innerHTML = `<td colspan="4">${r.concepto}</td><td class="r">${sc(r.sA)}</td><td class="r">${sc(r.sB)}</td>`;
+  } else if(r.tipo === 'cierre-a'){
+    tr.className = 'cierre-final';
+    tr.style.background = '#fdecea';
+    tr.innerHTML = `<td colspan="4">${r.concepto}</td><td class="r ko" colspan="2" style="font-size:14px"><b>${eur(r.sA)}</b> 🔴 Exceso: <b>+82.362 €</b></td>`;
+  } else if(r.tipo === 'cierre-b'){
+    tr.className = 'cierre-final';
+    tr.style.background = '#fff3e0';
+    tr.innerHTML = `<td colspan="4">${r.concepto}</td><td class="r ko" colspan="2" style="font-size:14px"><b>${eur(r.sB)}</b> 🔴 Exceso: <b>+48.981 €</b></td>`;
+  } else {
+    if(r.tipo === 'cobro') tr.className = 'cobro';
+    if(r.tipo === 'critico') tr.className = 'critico';
+    const ingS = r.ing > 0 ? `<span class="ok">+${eur(r.ing)}</span>` : '';
+    const carS = r.car > 0 ? `<span class="ko">−${eur(r.car)}</span>` : '';
+    tr.innerHTML = `<td>${r.fecha}</td><td>${r.concepto}</td><td class="r">${ingS}</td><td class="r">${carS}</td><td class="r">${sc(r.sA)}</td><td class="r">${sc(r.sB)}</td>`;
+  }
+  tbody.appendChild(tr);
 });
 
-const meses=D.meses;let chT=null;
-function buildChTime(m){if(chT)chT.destroy();const ml=meses.map(x=>x.mes);let cfg;
-if(m==='bars'){cfg={type:'bar',data:{labels:ml,datasets:[{label:'Cobros',data:meses.map(x=>x.ing),backgroundColor:'rgba(79,121,66,0.75)'},{label:'Pagos',data:meses.map(x=>x.car),backgroundColor:'rgba(168,65,47,0.7)'}]},options:{responsive:true,plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>eur(v)}}}}};}
-else if(m==='neto'){cfg={type:'bar',data:{labels:ml,datasets:[{label:'Neto',data:meses.map(x=>x.neto),backgroundColor:meses.map(x=>x.neto>=0?'rgba(79,121,66,0.75)':'rgba(168,65,47,0.7)')}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>eur(v)}}}}};}
-else{let a=0;const ac2=meses.map(x=>{a+=x.neto;return a;});cfg={type:'line',data:{labels:ml,datasets:[{label:'Acumulado',data:ac2,borderColor:'#2f4858',backgroundColor:'rgba(47,72,88,0.08)',fill:true,tension:0.3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>eur(v)}}}}};}
-chT=new Chart(document.getElementById('chTime'),cfg);}
-buildChTime('bars');
-document.querySelectorAll('.ctrls button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.ctrls button').forEach(x=>x.classList.remove('on'));b.classList.add('on');buildChTime(b.dataset.m);}));
+// Gráfico
+const labels = ['20/10','23/10','29/10','30/10','31/10','01/11','03/11','05/11','11/11','13/11','17/11','19/11','20/11\n🔴MOD303','25/11','28/11','29/11'];
+const sA = [-44265,-42206,-42983,-55301,-55900,-44618,-63179,-79806,-81329,-83961,-82255,-86744,-110544,-109142,-120864,-121283];
+const sB = [-10883, -8824, -9601,-21920,-22519,-11236,-29797,-46199,-47895,-50527,-48821,-53310, -77110, -75708, -87430, -87849];
 
-new Chart(document.getElementById('chCli'),{type:'doughnut',data:{labels:D.clientes.map(x=>x.k),datasets:[{data:D.clientes.map(x=>x.v),backgroundColor:['#2f4858','#4f7942','#b08d3e','#8a8170']}]},options:{plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},cutout:'60%'}});
-const gT=D.gastos.slice(0,7),gR=D.gastos.slice(7).reduce((a,b)=>a+b.v,0);
-new Chart(document.getElementById('chGto'),{type:'doughnut',data:{labels:[...gT.map(x=>x.k),'Otros'],datasets:[{data:[...gT.map(x=>x.v),gR],backgroundColor:['#a8412f','#2f4858','#578a8a','#c86828','#b08d3e','#4f7942','#7a5c8a','#8a8170']}]},options:{plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},cutout:'60%'}});
+const limPlugin = {id:'lim', afterDraw(c){
+  const{ctx, chartArea:{left,right,bottom}, scales:{y}} = c;
+  const yL = y.getPixelForValue(LIMITE);
+  ctx.save();
+  ctx.fillStyle='rgba(168,65,47,0.05)';ctx.fillRect(left,yL,right-left,bottom-yL);
+  ctx.strokeStyle='#c0392b';ctx.lineWidth=2.5;ctx.setLineDash([7,4]);
+  ctx.beginPath();ctx.moveTo(left,yL);ctx.lineTo(right,yL);ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='#c0392b';ctx.font='bold 11px Segoe UI';
+  ctx.fillText('Póliza crédito Sabadell  −40.000 €',left+8,yL-6);
+  ctx.restore();
+}};
 
-const mx_i=Math.max(...D.top_ing.map(g=>g.v));
-document.getElementById('topIng').innerHTML=D.top_ing.map(g=>`<div class="rowbar"><div class="l"><b>${g.k}</b><span>${eur(g.v)}</span></div><div class="bar"><i style="width:${(g.v/mx_i*100).toFixed(0)}%;background:var(--green)"></i></div></div>`).join('');
-const mx_c=Math.max(...D.top_car.map(g=>g.v));
-document.getElementById('topCar').innerHTML=D.top_car.map(g=>`<div class="rowbar"><div class="l"><b>${g.k}</b><span>${eur(g.v)}</span></div><div class="bar"><i style="width:${(g.v/mx_c*100).toFixed(0)}%;background:var(--red)"></i></div></div>`).join('');
-
-const sit=[
-  `Cobros 2026: <b>${eur(D.tot_ing)}</b> · Pagos: <b>${eur(D.tot_car)}</b> · Resultado neto: <b style="color:var(--green)">${lab(neto)}</b>. Flujo operativo real (sin los 150k JTM): <b style="color:var(--green)">+170.872 €</b>. Semana tranquila.`,
-  `<b>Próximo evento crítico — 20/10:</b> IVA 3T (30.118 €) lleva el saldo de +17.449 € a −12.669 €. Dentro del límite pero ajustado. La línea Sabadell (40k) cubre el descubierto.`,
-  `<b>Eric Depolo P-11 (15.000 €) previsto 05/11</b> — más de 100 días vencido. Su cobro mejora noviembre de −76.784 € a −61.784 €. Sin él, noviembre se acerca peligrosamente al límite.`,
-  `<b>Noviembre dentro del límite: −76.784 €</b>. Diciembre supera el límite: <b style="color:var(--red)">−118.861 €</b> (+28.861 € sobre el tope). El IVA 2T 3º plazo (06/12, 4.873 €) es la palanca más fácil: solicitar aplazamiento AEAT reduce el exceso a 24k.`,
-  `<b>Santander 8521 casi agotada:</b> −47.800 € de 50.000 €. Solo 2.200 € libres. Para cubrir el exceso de diciembre (28.861 €) se necesitaría ampliar la línea Sabadell o cobrar Infovaticana/Laurentina (27.236 € pendientes).`
-];
-document.getElementById('situacion').innerHTML=sit.map(s=>`<li style="margin-bottom:4px">${s}</li>`).join('');
+new Chart(document.getElementById('chComp'),{
+  type:'line', plugins:[limPlugin],
+  data:{labels, datasets:[
+    {label:'Con IVA 303 — Escenario A', data:sA,
+     borderColor:'#a8412f', backgroundColor:'rgba(168,65,47,0.07)',
+     borderWidth:2.5,
+     pointRadius: sA.map((v,i)=> i===12 ? 7 : 4),
+     pointBackgroundColor: sA.map(v => v < LIMITE ? '#a8412f' : '#4f7942'),
+     tension:0.3, fill:true},
+    {label:'Sin IVA 303 — Escenario B', data:sB,
+     borderColor:'#e67e22', backgroundColor:'rgba(230,126,34,0.06)',
+     borderWidth:2.5,
+     pointRadius: sB.map((v,i)=> i===12 ? 7 : 4),
+     pointBackgroundColor: sB.map(v => v < LIMITE ? '#a8412f' : '#4f7942'),
+     tension:0.3, fill:true}
+  ]},
+  options:{responsive:true,
+    plugins:{
+      legend:{position:'bottom',labels:{font:{size:12},padding:16}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${eur(c.raw)}`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:9},maxRotation:0},grid:{display:false}},
+      y:{ticks:{callback:v=>eur(v),font:{size:10}},
+         grid:{color:'rgba(0,0,0,0.04)'},
+         suggestedMin:-135000, suggestedMax:5000}
+    }
+  }
+});
 </script>
 </body>
 </html>
